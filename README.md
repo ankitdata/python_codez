@@ -1,1 +1,3 @@
-# python_codez
+## python_codez
+
+### Handy python codes 
