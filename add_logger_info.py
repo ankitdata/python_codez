@@ -9,7 +9,7 @@ _logger.setLevel(logging.INFO)
 
 filename = 'your_file.log'
 
-my_logger = logging.getLogger(msg_id)
+my_logger = logging.getLogger(filename)
 my_logger.setLevel(logging.INFO)
 handler = logging.handlers.RotatingFileHandler(filename, maxBytes=20)
 my_logger.addHandler(handler)
