@@ -1,0 +1,52 @@
+step -1
+Get code/repo
+make .tar
+
+step-2
+Create
+	-Dockerfile (apt install libgl1-mesa-glx -y) add this in docker file
+	- file.yaml
+	- requirements.txt  
+
+step-3
+docker build -t prod-image .
+docker images --(to check built images ) 
+
+<Tag for gcr>
+docker tag prod-image gcr.io/project_id/prod-image
+docker images
+
+push image to container registry
+docker push gcr.io/project_id/prod-image
+
+<from kubernetes >
+create cluster
+configure cluster
+	- set no. of nodes.
+	- select machine type N1/E etc
+
+<open kubernates from cluster open command>
+connect cluster with cloud shell command  
+
+doc Link - 
+https://cloud.google.com/kubernetes-engine/docs/tutorials/authenticating-to-cloud-platform
+
+<create secret key to connect pubsub>
+kubectl create secret generic pubsub-key --from-file=key.json=path/file.json
+
+add prod.yaml
+add pubsub config 
+give image path and name from registry in prod.yaml
+
+<To create Pods>
+kubectl apply -f prod.yaml
+
+<to check pods status>
+kubectl get pods
+
+<To get inside container>
+kubectl exec -i -t podname --container containername -- /bin/bash 
+
+success..!!!
+
+
